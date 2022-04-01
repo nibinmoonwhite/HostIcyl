@@ -197,3 +197,14 @@ class Listbannercard3(generics.GenericAPIView):
             "status":True,
             "message":'Success',
             "response":serializer.data})
+
+
+
+# class Okview(generics.GenericAPIView):
+#     def get(self, request):
+#         return Response({"ok"})
+
+class okview(generics.GenericAPIView):
+    def get(self, request):
+
+        return Response({"ok"})

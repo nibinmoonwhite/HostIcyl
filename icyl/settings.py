@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'icyl_app',
     'cloudinary_storage',
     'cloudinary',
@@ -138,11 +139,12 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'icyl',
         'USER': 'moonwhite',
-        'PASSWORD': 'moonwhite',
+        'PASSWORD': 'Moonwhite@123',
         'HOST': 'localhost',
         'PORT': '3306',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
