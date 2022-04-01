@@ -134,14 +134,26 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.RawMediaCloudinaryStorage'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'icyl',
+#         'USER': 'moonwhite',
+#         'PASSWORD': 'Moonwhite@123',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'icyl',
-        'USER': 'moonwhite',
-        'PASSWORD': 'Moonwhite@123',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd7s2riv2pp6498',
+        'USER': 'davpyamhvhbdvo',
+        'PASSWORD': '3d403afb90e815b34861ad69762861f044af36c0a51ce88e9100a943353afab9',
+        'HOST': 'ec2-3-218-171-44.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
