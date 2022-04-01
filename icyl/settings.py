@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-w3+vov*=saiwps6lsju(4ppc9e46wu4d%-+wch-gxzg)gjc(d-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*','https://icyl-backend.herokuapp.com/']
 
 
 # Application definition
