@@ -5,6 +5,10 @@ from rest_framework.response import Response
 from django.http import HttpResponse
 from rest_framework import generics
 
+from django.core.mail import EmailMessage
+from django.core.mail import send_mail
+import smtplib
+
 
 class ListBanners(generics.GenericAPIView):
     serializer_class=BannersSerializer        
@@ -208,3 +212,42 @@ class okview(generics.GenericAPIView):
     def get(self, request):
 
         return Response({"ok"})
+
+class volunteeremail(generics.CreateAPIView):
+    def post(self,request):
+        firstname = request.data['firstname']
+        lastname = request.data['lastname']
+        age_group=Agegroup.objects.get(id=request.data['age_group'])
+        phone = request.data['phone']
+        committee=Committee.objects.get(id=request.data['committee'])
+        is_lead = request.data['is_lead']
+        is_volunteer = request.data['is_volunteer']
+
+
+        data ={
+
+            'mailsubject':" Volunteer Registration",
+            'firstname': firstname,
+            'lastname': lastname,
+            'age_group':age_group.age,
+            'phone':phone,
+            'committee':committee.committee,
+            'is_lead':is_lead,
+            'is_volunteer':is_volunteer
+        }
+
+        message = '''
+             <h3> firstname:{} </h3><br> 
+             <h3> lastname:{} </h3><br> 
+             <h3> age_group:{} </h3><br> 
+             <h3> phone:{} </h3><br> 
+             <h3> committee:{} </h3><br> 
+             <h3> is_lead:{} </h3><br> 
+             <h3> is_volunteer:{} </h3><br> 
+
+        '''.format(data['firstname'],data['lastname'],data['age_group'],data['phone'],data['committee']
+        ,data['is_lead'],data['is_volunteer'])
+        email = EmailMessage(data['mailsubject'],message,'abnajahana@gmail.com',['abnajahana@gmail.com'])
+        email.content_subtype='html'
+        email.send()
+        return Response("success")

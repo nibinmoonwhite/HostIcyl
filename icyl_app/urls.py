@@ -30,6 +30,6 @@ urlpatterns = [
     path('api/addduaandspecialrequests/',Addduaandspecialrequests.as_view()),
     path('api/addfeedbackandquestions/',Addfeedbackandquestions.as_view()),
     path('api/addsubscribeandnewsletter/',Addsubscribeandnewsletter.as_view()),
- 
+    path('api/volunteeremail/',volunteeremail.as_view()), 
 
 ]
