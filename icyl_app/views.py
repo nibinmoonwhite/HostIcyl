@@ -247,7 +247,7 @@ class volunteeremail(generics.CreateAPIView):
 
         '''.format(data['firstname'],data['lastname'],data['age_group'],data['phone'],data['committee']
         ,data['is_lead'],data['is_volunteer'])
-        email = EmailMessage(data['mailsubject'],message,'abnajahana@gmail.com',['abnajahana@gmail.com'])
+        email = EmailMessage(data['mailsubject'],message,'office@icyl.org',['office@icyl.org'])
         email.content_subtype='html'
         email.send()
         return Response("success")
