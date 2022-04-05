@@ -15,7 +15,7 @@ urlpatterns = [
     path('api/listevents/',ListEvent.as_view()),
     path('api/listevent/<int:pk>/',ListEventbyid.as_view()),
     path('api/listvideo/',ListVideo.as_view()),
-    path('api/listvideobyid/',ListVideobyid.as_view()),
+    path('api/listvideobyid/<int:pk>/',ListVideobyid.as_view()),
     path('api/listagegroup/',ListAgegroup.as_view()),
     path('api/listcommittee/',ListCommittee.as_view()),
     path('api/addform/',AddForm.as_view()),

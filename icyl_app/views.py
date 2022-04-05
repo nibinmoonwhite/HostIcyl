@@ -73,8 +73,8 @@ class ListVideo(generics.GenericAPIView):
 
 class ListVideobyid(generics.GenericAPIView):
     serializer_class=VideoSerializer        
-    def get(self, request):
-        queryset = Video.objects.filter(id=1)
+    def get(self, request,pk):
+        queryset = Video.objects.filter(id=pk)
         serializer = VideoSerializer(queryset, many=True)
         return Response(serializer.data)
 
