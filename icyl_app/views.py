@@ -291,7 +291,7 @@ class Feedbackmail(generics.CreateAPIView):
 
         data ={
 
-        'mailsubject':" Dua Or specialrequest",
+        'mailsubject':" Feedback",
         'subject':subject, 
         'message':message,
         'email':email
