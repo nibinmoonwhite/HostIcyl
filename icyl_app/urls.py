@@ -32,4 +32,8 @@ urlpatterns = [
     path('api/addsubscribeandnewsletter/',Addsubscribeandnewsletter.as_view()),
     path('api/volunteeremail/',volunteeremail.as_view()), 
 
+
+    path('api/duamail/',Duamail.as_view()), 
+    path('api/feedbackmail/',Feedbackmail.as_view()), 
+    path('api/newsletteremail/',Newsletteremail.as_view()), 
 ]

@@ -249,3 +249,89 @@ class volunteeremail(generics.CreateAPIView):
         email.content_subtype='html'
         email.send()
         return Response("success")
+
+
+
+class Duamail(generics.CreateAPIView):
+    def post(self,request):
+        name = request.data['name']
+        message = request.data['message']
+        email = request.data['email']
+
+
+
+        data ={
+
+        'mailsubject':" Dua Or specialrequest",
+        'name':name, 
+        'message':message,
+        'email':email
+        }
+
+        message = '''
+             <h3> name:{} </h3><br> 
+             <h3> message:{} </h3><br> 
+             <h3> email:{} </h3><br> 
+
+
+        '''.format(data['name'],data['message'],data['email'])
+        email = EmailMessage(data['mailsubject'],message,'office@icyl.org',['office@icyl.org'])
+        email.content_subtype='html'
+        email.send()
+        return Response("success")
+
+
+class Feedbackmail(generics.CreateAPIView):
+    def post(self,request):
+        subject = request.data['subject']
+        message = request.data['message']
+        email = request.data['email']
+
+
+
+        data ={
+
+        'mailsubject':" Dua Or specialrequest",
+        'subject':subject, 
+        'message':message,
+        'email':email
+
+
+        }
+
+        message = '''
+             <h3> subject:{} </h3><br> 
+             <h3> message:{} </h3><br> 
+             <h3> email:{} </h3><br> 
+
+
+        '''.format(data['subject'],data['message'],data['email'])
+        email = EmailMessage(data['mailsubject'],message,'office@icyl.org',['office@icyl.org'])
+        email.content_subtype='html'
+        email.send()
+        return Response("success")
+
+class Newsletteremail(generics.CreateAPIView):
+    def post(self,request):
+
+        email = request.data['email']
+
+
+
+        data ={
+
+        'mailsubject':"Newsletter",
+
+        'email':email
+        }
+
+        message = '''
+
+             <h3> email:{} </h3><br> 
+
+
+        '''.format(data['email'])
+        email = EmailMessage(data['mailsubject'],message,'office@icyl.org',['office@icyl.org'])
+        email.content_subtype='html'
+        email.send()
+        return Response("success")
