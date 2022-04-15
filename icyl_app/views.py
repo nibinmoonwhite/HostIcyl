@@ -335,3 +335,210 @@ class Newsletteremail(generics.CreateAPIView):
         email.content_subtype='html'
         email.send()
         return Response("success")
+
+
+#####-------------------------------------------------------------------------
+
+
+                 #######################
+
+class ListEvent_information(generics.GenericAPIView):
+    serializer_class=Event_informationSerializer        
+    def get(self, request):
+        queryset = Event_information.objects.all()
+        serializer = Event_informationSerializer(queryset, many=True)
+        return Response({
+            "status":True,
+            "message":'Success',
+            "response":serializer.data})
+
+
+class AddEvent_information(generics.CreateAPIView):
+    serializer_class=Event_informationSerializer        
+    def post(self, request):
+        serializer = Event_informationSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"status": True, "message": "Success", "response": {}})
+        return Response({"status": False, "message": "failed", "response": serializer.errors})
+        
+         ######################################
+
+
+
+class Listfees(generics.GenericAPIView):
+    serializer_class=feesSerializer        
+    def get(self, request):
+        queryset = fees.objects.all()
+        serializer = feesSerializer(queryset, many=True)
+        return Response({
+            "status":True,
+            "message":'Success',
+            "response":serializer.data})
+
+
+class Addfees(generics.CreateAPIView):
+    serializer_class=feesSerializer        
+    def post(self, request):
+        serializer = feesSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"status": True, "message": "Success", "response": {}})
+        return Response({"status": False, "message": "failed", "response": serializer.errors})
+        
+         ######################################
+
+
+class ListCategory(generics.GenericAPIView):
+    serializer_class=CategorySerializer        
+    def get(self, request):
+        queryset = Category.objects.all()
+        serializer = CategorySerializer(queryset, many=True)
+        return Response({
+            "status":True,
+            "message":'Success',
+            "response":serializer.data})
+
+
+class AddCategory(generics.CreateAPIView):
+    serializer_class=CategorySerializer        
+    def post(self, request):
+        serializer = CategorySerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"status": True, "message": "Success", "response": {}})
+        return Response({"status": False, "message": "failed", "response": serializer.errors})
+        
+         ######################################
+
+
+class ListDiscount(generics.GenericAPIView):
+    serializer_class=DiscountSerializer        
+    def get(self, request):
+        queryset = Discount.objects.all()
+        serializer = DiscountSerializer(queryset, many=True)
+        return Response({
+            "status":True,
+            "message":'Success',
+            "response":serializer.data})
+
+
+class AddDiscount(generics.CreateAPIView):
+    serializer_class=DiscountSerializer        
+    def post(self, request):
+        serializer = DiscountSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"status": True, "message": "Success", "response": {}})
+        return Response({"status": False, "message": "failed", "response": serializer.errors})
+        
+         ######################################
+
+
+
+class ListCustom_informationSerializer(generics.GenericAPIView):
+    serializer_class=Custom_informationSerializer        
+    def get(self, request):
+        queryset = Custom_information.objects.all()
+        serializer = Custom_informationSerializer(queryset, many=True)
+        return Response({
+            "status":True,
+            "message":'Success',
+            "response":serializer.data})
+
+
+class AddCustom_information(generics.CreateAPIView):
+    serializer_class=Custom_informationSerializer        
+    def post(self, request):
+        serializer = Custom_informationSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"status": True, "message": "Success", "response": {}})
+        return Response({"status": False, "message": "failed", "response": serializer.errors})
+        
+         ######################################
+
+
+
+class ListGender(generics.GenericAPIView):
+    serializer_class=GenderSerializer        
+    def get(self, request):
+        queryset = Gender.objects.all()
+        serializer = GenderSerializer(queryset, many=True)
+        return Response({
+            "status":True,
+            "message":'Success',
+            "response":serializer.data})
+
+
+       ######################################
+
+
+
+class ListParticipant(generics.GenericAPIView):
+    serializer_class=ParticipantSerializer        
+    def get(self, request):
+        queryset = Participant.objects.all()
+        serializer = ParticipantSerializer(queryset, many=True)
+        return Response({
+            "status":True,
+            "message":'Success',
+            "response":serializer.data})
+
+
+class AddParticipant(generics.CreateAPIView):
+    serializer_class=ParticipantSerializer        
+    def post(self, request):
+        serializer = ParticipantSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"status": True, "message": "Success", "response": {}})
+        return Response({"status": False, "message": "failed", "response": serializer.errors})
+        
+         ######################################
+
+
+class ListPrimmary_contact(generics.GenericAPIView):
+    serializer_class=Primmary_contactSerializer        
+    def get(self, request):
+        queryset = Primmary_contact.objects.all()
+        serializer = Primmary_contactSerializer(queryset, many=True)
+        return Response({
+            "status":True,
+            "message":'Success',
+            "response":serializer.data})
+
+
+class AddPrimmary_contact(generics.CreateAPIView):
+    serializer_class=Primmary_contactSerializer        
+    def post(self, request):
+        serializer = Primmary_contactSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"status": True, "message": "Success", "response": {}})
+        return Response({"status": False, "message": "failed", "response": serializer.errors})
+        
+         ######################################
+
+
+class Listevent_table(generics.GenericAPIView):
+    serializer_class=event_tableSerializer        
+    def get(self, request):
+        queryset = event_table.objects.all()
+        serializer = event_tableSerializer(queryset, many=True)
+        return Response({
+            "status":True,
+            "message":'Success',
+            "response":serializer.data})
+
+
+class Addevent_table(generics.CreateAPIView):
+    serializer_class=event_tableSerializer        
+    def post(self, request):
+        serializer = event_tableSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"status": True, "message": "Success", "response": {}})
+        return Response({"status": False, "message": "failed", "response": serializer.errors})
+        
+         ######################################

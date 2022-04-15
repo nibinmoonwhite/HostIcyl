@@ -84,3 +84,62 @@ class subscribeandnewsletterSerializer(serializers.ModelSerializer):
     class Meta:
         model = subscribeandnewsletter
         fields = ['id','email']
+
+
+
+#----------------------------------------------------------------------------
+
+class Event_informationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Event_information
+        fields = ('id','event_name','start_date','end_date','location')
+
+class feesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = fees
+        fields = ('id','fees','event_id')
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ('id','category_description')
+
+class DiscountSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Discount
+        fields = ('id','fees_id','discount_category','discount_percent')
+
+
+class Custom_informationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Custom_information
+        fields = ('id','field1_name','field1','field2_name',
+                   'field2','field3_name','field3','field4_name','field4',
+        'num1_name','num1','num2_name','num2','num3_name','num3',
+        'num4_name','num4','date1_name','date1','date2_name',
+        'date2','date3_name','date3','date4_name','date4')
+
+
+class GenderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Gender
+        fields =('id','gender')
+
+
+class ParticipantSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Participant
+        fields = ('id','name','age','gender')
+
+class Primmary_contactSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Primmary_contact
+        fields = ('id','name','phone','email','address')
+
+class event_tableSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = event_table
+        fields =('id','fees_id','discount_id',
+                'contact_id','category_id',
+                'custom_id')
+

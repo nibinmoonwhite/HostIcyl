@@ -1,3 +1,4 @@
+from statistics import mode
 from django.db import models
 from django.db.models.base import Model
 from django.db.models.deletion import CASCADE
@@ -140,6 +141,76 @@ class feedbackandquestions(models.Model):
 class subscribeandnewsletter(models.Model):
     email=models.EmailField()
 
+class Event_information(models.Model):
+    event_name=models.CharField(max_length=500,null=True,blank=True)
+    start_date=models.DateField(null=True,blank=True)
+    end_date=models.DateField(null=True,blank=True)
+    location=models.CharField(max_length=500,null=True,blank=True)
 
+class fees(models.Model):
+    fees=models.CharField(max_length=500,null=True,blank=True)
+    event_id=models.ForeignKey(Event_information,on_delete=models.CASCADE,null=True,blank=True)
+
+
+class Category(models.Model):
+    category_description=models.CharField(max_length=500,null=True,blank=True)
+
+class Discount(models.Model):
+    fees_id=models.ForeignKey(fees,on_delete=models.CASCADE,null=True,blank=True)
+    discount_category=models.CharField(max_length=500,null=True,blank=True)
+    discount_percent=models.CharField(max_length=500,null=True,blank=True)
+
+
+
+class Custom_information(models.Model):
+    field1_name=models.CharField(max_length=500,null=True,blank=True)
+    field1=models.TextField(null=True,blank=True)   
+    field2_name=models.CharField(max_length=500,null=True,blank=True)
+    field2=models.TextField(null=True,blank=True)     
+    field3_name=models.CharField(max_length=500,null=True,blank=True)
+    field3=models.TextField(null=True,blank=True) 
+    field4_name=models.CharField(max_length=500,null=True,blank=True)
+    field4=models.TextField(null=True,blank=True) 
+    num1_name=models.CharField(max_length=500,null=True,blank=True)
+    num1=models.CharField(max_length=500,null=True,blank=True)
+    num2_name=models.CharField(max_length=500,null=True,blank=True)
+    num2=models.CharField(max_length=500,null=True,blank=True)
+    num3_name=models.CharField(max_length=500,null=True,blank=True)
+    num3=models.CharField(max_length=500,null=True,blank=True)
+    num4_name=models.CharField(max_length=500,null=True,blank=True)
+    num4=models.CharField(max_length=500,null=True,blank=True)
+    date1_name=models.DateField(null=True,blank=True)
+    date1=models.DateField(null=True,blank=True)    
+    date2_name=models.DateField(null=True,blank=True)
+    date2=models.DateField(null=True,blank=True)  
+    date3_name=models.DateField(null=True,blank=True)
+    date3=models.DateField(null=True,blank=True)  
+    date4_name=models.DateField(null=True,blank=True)
+    date4=models.DateField(null=True,blank=True)  
+
+
+class Gender(models.Model):
+    gender=models.CharField(max_length=500,null=True,blank=True)
+
+
+class Participant(models.Model):
+    name=models.CharField(max_length=500,null=True,blank=True)
+    age=models.CharField(max_length=500,null=True,blank=True)
+    gender=models.ForeignKey(Gender,on_delete=models.CASCADE,null=True,blank=True)
+    
+
+class Primmary_contact(models.Model):
+    name=models.CharField(max_length=500,null=True,blank=True)
+    phone=models.CharField(max_length=500,null=True,blank=True)
+    email=models.EmailField(null=True,blank=True)
+    address=models.CharField(max_length=500,null=True,blank=True)
+
+
+class event_table(models.Model):
+    fees_id=models.ForeignKey(fees,on_delete=models.CASCADE,null=True,blank=True)
+    discount_id=models.ForeignKey(Discount,on_delete=models.CASCADE,null=True,blank=True)
+    contact_id=models.ForeignKey(Primmary_contact,on_delete=models.CASCADE,null=True,blank=True)
+    category_id=models.ForeignKey(Category,on_delete=models.CASCADE,null=True,blank=True)
+    custom_id=models.ForeignKey(Custom_information,on_delete=models.CASCADE,null=True,blank=True)
 
 

@@ -85,4 +85,43 @@ class IndexgroupAdmin(admin.ModelAdmin):
 @admin.register(subscribeandnewsletter)
 class IndexgroupAdmin(admin.ModelAdmin):
     list_display =('id', 'email')
+#-------------------------------------------
+@admin.register(Event_information)
+class IndexgroupAdmin(admin.ModelAdmin):
+    list_display =('id','event_name','start_date','end_date','location')
 
+
+@admin.register(fees)
+class IndexgroupAdmin(admin.ModelAdmin):
+    list_display =('id','fees','event_id')
+
+@admin.register(Category)
+class IndexgroupAdmin(admin.ModelAdmin):
+    list_display =('id','category_description')
+
+@admin.register(Discount)
+class IndexgroupAdmin(admin.ModelAdmin):
+    list_display =('id','fees_id','discount_category','discount_percent')
+
+@admin.register(Custom_information)
+class IndexgroupAdmin(admin.ModelAdmin):
+    list_display =('id','field1_name','field1','field2_name','field2','field3_name','field3','field4_name','field4','num1_name','num1','num2_name','num2','num3_name','num3','num4_name',
+    'num4','date1_name','date1','date2_name','date2','date3_name','date3','date4_name',
+    'date4')
+
+@admin.register(Gender)
+class IndexgroupAdmin(admin.ModelAdmin):
+    list_display =('id','gender')
+
+@admin.register(Participant)
+class IndexgroupAdmin(admin.ModelAdmin):
+    list_display =('id','name','age','gender')
+
+@admin.register(Primmary_contact)
+class IndexgroupAdmin(admin.ModelAdmin):
+    list_display =('id','name','phone','email','address')
+
+@admin.register(event_table)
+class IndexgroupAdmin(admin.ModelAdmin):
+    list_display =('id','fees_id','discount_id','contact_id',
+    'category_id','custom_id')

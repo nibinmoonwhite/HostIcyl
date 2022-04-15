@@ -36,4 +36,42 @@ urlpatterns = [
     path('api/duamail/',Duamail.as_view()), 
     path('api/feedbackmail/',Feedbackmail.as_view()), 
     path('api/newsletteremail/',Newsletteremail.as_view()), 
+
+
+
+    #---------------------15/april/2021-----------------------------------
+
+
+    path('api/ListEvent_information/',ListEvent_information.as_view()), 
+    path('api/AddEvent_information/',AddEvent_information.as_view()), 
+
+    path('api/Listfees/',Listfees.as_view()), 
+    path('api/Addfees/',Addfees.as_view()), 
+
+
+    path('api/ListCategory/',ListCategory.as_view()), 
+    path('api/AddCategory/',AddCategory.as_view()), 
+
+    path('api/ListDiscount/',ListDiscount.as_view()), 
+    path('api/AddDiscount/',AddDiscount.as_view()), 
+
+
+    path('api/ListCustom_informationSerializer/',ListCustom_informationSerializer.as_view()), 
+    path('api/AddCustom_information/',AddCustom_information.as_view()), 
+
+    path('api/ListGender/',ListGender.as_view()), 
+
+
+    path('api/ListParticipant/',ListParticipant.as_view()), 
+    path('api/AddParticipant/',AddParticipant.as_view()), 
+
+    path('api/ListPrimmary_contact/',ListPrimmary_contact.as_view()), 
+    path('api/AddPrimmary_contact/',AddPrimmary_contact.as_view()), 
+
+    path('api/Listevent_table/',Listevent_table.as_view()), 
+    path('api/Addevent_table/',Addevent_table.as_view()), 
+
+    #----------------end-----15/april/2021-----------------------------------
+
+
 ]
