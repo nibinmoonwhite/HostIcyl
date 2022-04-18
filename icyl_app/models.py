@@ -214,3 +214,12 @@ class event_table(models.Model):
     custom_id=models.ForeignKey(Custom_information,on_delete=models.CASCADE,null=True,blank=True)
 
 
+class meet_board(models.Model):
+    name=models.CharField(max_length=500,null=True,blank=True)
+    image=models.FileField(upload_to='images/')
+    designation=models.CharField(max_length=500,null=True,blank=True)
+    
+class prayerschedule(models.Model):
+     image=models.FileField(upload_to='images/')
+
+   

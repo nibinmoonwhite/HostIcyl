@@ -143,3 +143,14 @@ class event_tableSerializer(serializers.ModelSerializer):
                 'contact_id','category_id',
                 'custom_id')
 
+
+
+
+class meet_boardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = meet_board
+        fields ='__all__'
+class prayerscheduleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = prayerschedule
+        fields ='__all__'

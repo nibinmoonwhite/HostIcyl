@@ -72,6 +72,7 @@ urlpatterns = [
     path('api/Addevent_table/',Addevent_table.as_view()), 
 
     #----------------end-----15/april/2021-----------------------------------
-
-
+     #---------------------18 april-------------------
+    path('api/Listmeet_board/',Listevent_table.as_view()), 
+    path('api/Listprayerschedule/',Addevent_table.as_view()), 
 ]

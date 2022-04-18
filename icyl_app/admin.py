@@ -125,3 +125,11 @@ class IndexgroupAdmin(admin.ModelAdmin):
 class IndexgroupAdmin(admin.ModelAdmin):
     list_display =('id','fees_id','discount_id','contact_id',
     'category_id','custom_id')
+
+@admin.register(meet_board)
+class IndexgroupAdmin(admin.ModelAdmin):
+    list_display =('id','name','image','designation')
+
+@admin.register(prayerschedule)
+class IndexgroupAdmin(admin.ModelAdmin):
+    list_display =('id','image')

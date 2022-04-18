@@ -542,3 +542,26 @@ class Addevent_table(generics.CreateAPIView):
         return Response({"status": False, "message": "failed", "response": serializer.errors})
         
          ######################################
+
+
+
+
+class Listmeet_board(generics.GenericAPIView):
+    serializer_class=meet_boardSerializer        
+    def get(self, request):
+        queryset = meet_board.objects.all()
+        serializer = meet_boardSerializer(queryset, many=True)
+        return Response({
+            "status":True,
+            "message":'Success',
+            "response":serializer.data})
+
+class Listprayerschedule(generics.GenericAPIView):
+    serializer_class=prayerscheduleSerializer        
+    def get(self, request):
+        queryset = prayerschedule.objects.all()
+        serializer = prayerscheduleSerializer(queryset, many=True)
+        return Response({
+            "status":True,
+            "message":'Success',
+            "response":serializer.data})
