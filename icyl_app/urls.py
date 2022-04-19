@@ -8,7 +8,6 @@ from .import views
 
 urlpatterns = [
     path('',okview.as_view()),
-    # path('',Okview.as_view()),
     path('api/listbanners/',ListBanners.as_view()),
     path('api/listbanner/<int:pk>/',ListBannerbyid.as_view()),
     path('api/listprayers/',ListPrayers.as_view()),
