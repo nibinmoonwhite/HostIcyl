@@ -1,4 +1,6 @@
+import os
 from django.shortcuts import render
+import pandas as pd
 from .models import *
 from .serializers import *
 from rest_framework.response import Response
@@ -8,6 +10,8 @@ from rest_framework import generics
 from django.core.mail import EmailMessage
 from django.core.mail import send_mail
 import smtplib
+from rest_framework.exceptions import AuthenticationFailed
+from rest_framework.views import APIView
 
 
 class ListBanners(generics.GenericAPIView):
@@ -565,3 +569,122 @@ class Listprayerschedule(generics.GenericAPIView):
             "status":True,
             "message":'Success',
             "response":serializer.data})
+
+
+class LoginView(APIView):
+    def post(self, request):
+        mail = request.data['mail']
+        password = request.data['password']
+
+        user = icylUser.objects.filter(email=mail).first()
+        print(user.password)
+        print(password)
+        # pass=icylUser.objects.filter()
+
+        if user is None:
+            raise AuthenticationFailed('User not found!')
+
+        if user.password!=password:
+            raise AuthenticationFailed('Incorrect password!')
+
+        response = Response()
+
+        response.data = {
+            'response':True,
+            'status':'Success',
+            'id': user.id,
+            'name': user.name,
+        }
+        return response
+
+
+
+class ListQurancompetetion(generics.GenericAPIView):
+    serializer_class=QurancompetetionSerializer        
+    def get(self, request):
+        queryset = Qurancompetetion.objects.all()
+        serializer = QurancompetetionSerializer(queryset, many=True)
+        return Response({
+            "status":True,
+            "message":'Success',
+            "response":serializer.data})
+
+class AddQurancompetetion(generics.CreateAPIView):
+    serializer_class=QurancompetetionSerializer        
+    def post(self, request):
+        serializer = QurancompetetionSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"status": True, "message": "Success", "response": {}})
+        return Response({"status": False, "message": "failed", "response": serializer.errors})
+
+class Getqurancompetetiontimeslot(generics.GenericAPIView):
+    serializer_class=Qurancompetetiontime_slotSerializer        
+    def get(self, request):
+        email = request.data['email']
+        queryset = Qurancompetetion.objects.filter(email=email)
+        serializer = Qurancompetetiontime_slotSerializer(queryset, many=True)
+        return Response({
+            "status":True,
+            "message":'Success',
+            "response":serializer.data})
+
+class Getqurancompetetiontimeslotbyphone(generics.GenericAPIView):
+    serializer_class=Qurancompetetiontime_slotSerializer        
+    def get(self, request):
+        phone = request.data['phone']
+        queryset = Qurancompetetion.objects.filter(phone=phone)
+        serializer = Qurancompetetiontime_slotSerializer(queryset, many=True)
+        return Response({
+            "status":True,
+            "message":'Success',
+            "response":serializer.data})
+            
+class Getqurancompetetionresult(generics.GenericAPIView):
+    serializer_class=QurancompetetionresultSerializer        
+    def get(self, request):
+        queryset = Qurancompetetion.objects.all()
+        serializer = QurancompetetionresultSerializer(queryset, many=True)
+        return Response({
+            "status":True,
+            "message":'Success',
+            "response":serializer.data})
+
+class UpdateQurancompetetion(generics.UpdateAPIView):
+
+    serializer_class = QurancompetetionSerializer
+
+    def put(self, request, pk):
+        des = Qurancompetetion.objects.get(id=pk)
+        ser = QurancompetetionSerializer(instance=des, data=request.data)
+        if ser.is_valid():
+            ser.save()
+            return Response("Updated!!")
+
+
+class ImportExcel(APIView):
+    def post(self, request):
+        path = os.getcwd()
+        excel_upload_obj=ExcelFileupload.objects.create(excel_file_upload=request.FILES['files'])
+        #df = pd.read_csv(f"{settings.BASE_DIR}excel/{excel_upload_obj.excel_file_upload}")       
+        df = pd.read_csv(f"{excel_upload_obj.excel_file_upload}")
+        for object in (df.values.tolist()):
+            Qurancompetetion.objects.create(
+                order =object[1],
+                order_date=object[2],
+                firstname=object[3],
+                lastname=object[4],
+                email =object[5],
+                phone=object[7],
+                address=object[6],
+                age=object[8],
+                surah=object[8],
+                gender=object[8],
+                candidate_name=object[8],
+                time_slot=object[8],
+                status=object[8],
+
+            )            
+            print(object)
+        return Response({"status": True, "message": "Imported", "response": "success"})
+        

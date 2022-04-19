@@ -129,12 +129,12 @@ class GenderSerializer(serializers.ModelSerializer):
 class ParticipantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Participant
-        fields = ('id','name','age','gender')
+        fields = ('id','name','age','gender','primary')
 
 class Primmary_contactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Primmary_contact
-        fields = ('id','name','phone','email','address')
+        fields = ('id','firstname','lastname','phone','email','address')
 
 class event_tableSerializer(serializers.ModelSerializer):
     class Meta:
@@ -150,7 +150,27 @@ class meet_boardSerializer(serializers.ModelSerializer):
     class Meta:
         model = meet_board
         fields ='__all__'
+
 class prayerscheduleSerializer(serializers.ModelSerializer):
     class Meta:
         model = prayerschedule
         fields ='__all__'
+
+
+class QurancompetetionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Qurancompetetion
+        fields =('id','order','order_date','firstname','lastname','email','phone','address','age'
+        ,'surah','gender','candidate_name','time_slot','status','status_detail','memorization','Makharij','Tajweed','Fluency',
+        'Judge','Judging_Comments')
+
+
+class Qurancompetetiontime_slotSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Qurancompetetion
+        fields =('id','candidate_name','time_slot')
+
+class QurancompetetionresultSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Qurancompetetion
+        fields =('id','surah','gender','candidate_name','memorization','Makharij','Tajweed','Fluency')

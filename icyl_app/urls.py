@@ -75,4 +75,16 @@ urlpatterns = [
      #---------------------18 april-------------------
     path('api/Listmeet_board/',Listevent_table.as_view()), 
     path('api/Listprayerschedule/',Addevent_table.as_view()), 
+
+    #------------------------------------quran 19---------------------------------
+    path('api/login/',LoginView.as_view()),
+    path('api/listqurancompettion/',ListQurancompetetion.as_view()),
+    path('api/updatequrancompetetion/<int:pk>/',UpdateQurancompetetion.as_view()),
+    path('api/excelimport/',ImportExcel.as_view()),
+    path('api/getqurancompetetionresult/',Getqurancompetetionresult.as_view()),
+    path('api/getqurancompetetiontimeslot/',Getqurancompetetiontimeslot.as_view()),
+    path('api/getqurancompetetiontimeslotbyphone/',Getqurancompetetiontimeslotbyphone.as_view()),
+    path('api/addQurancompetetion/',AddQurancompetetion.as_view()),
+
+    #--------------------------------------------------
 ]

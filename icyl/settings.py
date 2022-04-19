@@ -124,6 +124,11 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.RawMediaCloudinaryStorage'
 # DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.VideoMediaCloudinaryStorage'
 
 
+# AUTH_USER_MODEL = 'icyl_app.User'
+
+
+# AUTH_USER_MODEL = 'icyl_app.User'
+
 #---------------------------------------------------------------------------------------------
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

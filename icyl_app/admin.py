@@ -115,11 +115,12 @@ class IndexgroupAdmin(admin.ModelAdmin):
 
 @admin.register(Participant)
 class IndexgroupAdmin(admin.ModelAdmin):
-    list_display =('id','name','age','gender')
+    list_display =('id','name','age','gender','primary')
+
 
 @admin.register(Primmary_contact)
 class IndexgroupAdmin(admin.ModelAdmin):
-    list_display =('id','name','phone','email','address')
+    list_display =('id','firstname','lastname','phone','email','address')
 
 @admin.register(event_table)
 class IndexgroupAdmin(admin.ModelAdmin):
@@ -133,3 +134,17 @@ class IndexgroupAdmin(admin.ModelAdmin):
 @admin.register(prayerschedule)
 class IndexgroupAdmin(admin.ModelAdmin):
     list_display =('id','image')
+
+@admin.register(icylUser)
+class IndexgroupAdmin(admin.ModelAdmin):
+    list_display =('id','name','name','password','designation_id','username')
+
+@admin.register(Designation)
+class IndexgroupAdmin(admin.ModelAdmin):
+    list_display =('id','designation_name')
+
+@admin.register(Qurancompetetion)
+class IndexgroupAdmin(admin.ModelAdmin):
+    list_display =('id','order','order_date','firstname','lastname','email','phone','address','age'
+        ,'surah','gender','candidate_name','time_slot','status','status_detail','memorization','Makharij','Tajweed','Fluency',
+        'Judge','Judging_Comments')

@@ -6,6 +6,7 @@ from django.db.models import DateTimeField
 from django.db.models.expressions import OrderBy
 from django.utils import timezone
 from cloudinary_storage.storage import VideoMediaCloudinaryStorage
+from django.contrib.auth.models import AbstractUser
 
 
 class Banners(models.Model):
@@ -193,18 +194,18 @@ class Gender(models.Model):
     gender=models.CharField(max_length=500,null=True,blank=True)
 
 
-class Participant(models.Model):
-    name=models.CharField(max_length=500,null=True,blank=True)
-    age=models.CharField(max_length=500,null=True,blank=True)
-    gender=models.ForeignKey(Gender,on_delete=models.CASCADE,null=True,blank=True)
-    
-
 class Primmary_contact(models.Model):
-    name=models.CharField(max_length=500,null=True,blank=True)
+    firstname=models.CharField(max_length=500,null=True,blank=True)
+    lastname=models.CharField(max_length=500,null=True,blank=True)
     phone=models.CharField(max_length=500,null=True,blank=True)
     email=models.EmailField(null=True,blank=True)
     address=models.CharField(max_length=500,null=True,blank=True)
 
+class Participant(models.Model):
+    name=models.CharField(max_length=500,null=True,blank=True)
+    age=models.CharField(max_length=500,null=True,blank=True)
+    gender=models.ForeignKey(Gender,on_delete=models.CASCADE,null=True,blank=True)
+    primary=models.ForeignKey(Primmary_contact,on_delete=models.CASCADE,null=True,blank=True)
 
 class event_table(models.Model):
     fees_id=models.ForeignKey(fees,on_delete=models.CASCADE,null=True,blank=True)
@@ -222,4 +223,49 @@ class meet_board(models.Model):
 class prayerschedule(models.Model):
      image=models.FileField(upload_to='images/')
 
-   
+class ExcelFileupload(models.Model):
+    excel_file_upload=models.FileField(upload_to="excel")
+
+class Qurancompetetion(models.Model):
+    order=models.CharField(max_length=500,null=True,blank=True)
+    order_date=models.CharField(max_length=500,null=True,blank=True)
+    firstname=models.CharField(max_length=500,null=True,blank=True)
+    lastname=models.CharField(max_length=500,null=True,blank=True)
+    email=models.EmailField(null=True,blank=True)
+    phone=models.CharField(max_length=500,null=True,blank=True)
+    address=models.CharField(max_length=500,null=True,blank=True)
+    age=models.CharField(max_length=500,null=True,blank=True)
+    surah=models.CharField(max_length=500,null=True,blank=True)
+    gender=models.CharField(max_length=500,null=True,blank=True)
+    candidate_name=models.CharField(max_length=500,null=True,blank=True)
+    time_slot=models.CharField(max_length=500,null=True,blank=True)
+    status=models.CharField(max_length=500,null=True,blank=True)
+    status_detail=models.TextField(null=True,blank=True)
+    memorization=models.CharField(max_length=500,null=True,blank=True)
+    Makharij=models.CharField(max_length=500,null=True,blank=True)
+    Tajweed=models.CharField(max_length=500,null=True,blank=True)
+    Fluency=models.CharField(max_length=500,null=True,blank=True)
+    Judge=models.CharField(max_length=500,null=True,blank=True)
+    Judging_Comments=models.CharField(max_length=500,null=True,blank=True)
+
+
+
+class Designation(models.Model):
+    designation_name =models.CharField(max_length=100,null=True)
+
+    class Meta:
+        ordering = ['id']
+    def __str__(self):
+        return self.designation_name
+
+class icylUser(models.Model):
+    name = models.CharField(max_length=255,null=True,blank=True)
+    email = models.EmailField(max_length=255,unique=True)
+    password = models.CharField(max_length=255)
+    designation_id=models.ForeignKey(Designation,on_delete=models.CASCADE,null=True)
+    username = models.CharField(max_length=500,unique=True)
+
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = [] 
+
+    
