@@ -675,14 +675,14 @@ class ImportExcel(APIView):
                 firstname=object[3],
                 lastname=object[4],
                 email =object[5],
-                phone=object[7],
-                address=object[6],
+                phone=object[6],
+                address=object[7],
                 age=object[8],
-                surah=object[8],
-                gender=object[8],
-                candidate_name=object[8],
-                time_slot=object[8],
-                status=object[8],
+                surah=object[9],
+                gender=object[10],
+                candidate_name=object[11],
+                time_slot=object[12],
+                status=object[13],
 
             )            
             print(object)
